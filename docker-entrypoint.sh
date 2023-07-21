@@ -104,6 +104,12 @@ else
   sed -i 's/log_stdout: true/log_stdout: false/g' "$CHIA_ROOT/config/config.yaml"
 fi
 
+# Install timelord if service variable contains timelord substring
+if [ -z "${service##*timelord*}" ]; then
+    echo "Installing timelord using install-timelord.sh"
+    /bin/sh ./install-timelord.sh
+fi
+
 # Map deprecated legacy startup options.
 if [[ ${farmer} == "true" ]]; then
   service="farmer-only"
