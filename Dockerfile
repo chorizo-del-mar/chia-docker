@@ -1,5 +1,5 @@
 # CHIA BUILD STEP
-FROM python:3.9-bullseye AS chia_build
+FROM python:3.11-bullseye AS chia_build
 
 ARG BRANCH=latest
 ARG COMMIT=""
@@ -21,7 +21,7 @@ RUN echo "cloning ${BRANCH}" && \
 FROM mikefarah/yq:4 AS yq
 
 # IMAGE BUILD
-FROM python:3.9-slim-bullseye
+FROM python:3.11-slim-bullseye
 
 EXPOSE 8555 8444
 
